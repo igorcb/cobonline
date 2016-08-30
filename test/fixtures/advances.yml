@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  date_advance: 2016-08-30
+  client_id: 
+  price: 
+  balance: 
+  number_parts: 1
+  percent: 
+
+two:
+  date_advance: 2016-08-30
+  client_id: 
+  price: 
+  balance: 
+  number_parts: 1
+  percent: 

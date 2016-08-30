@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Advances</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>City</th>
+      <th>Client</th>
+      <th>Date</th>
+      <th>Price</th>
+      <th>Balance</th>
+      <th>Qty Parts</th>
+      <th>Percent</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @advances.each do |advance| %>
+      <tr>
+        <td><%= advance.client.city.name %></td>
+        <td><%= advance.client.name %></td>
+        <td><%= advance.date_advance %></td>
+        <td><%= advance.price %></td>
+        <td><%= advance.balance %></td>
+        <td><%= advance.number_parts %></td>
+        <td><%= advance.percent %></td>
+        <td><%= link_to 'Show', advance %></td>
+        <td><%= link_to 'Edit', edit_advance_path(advance) %></td>
+        <td><%= link_to 'Destroy', advance, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Advance', new_advance_path %>

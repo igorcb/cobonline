@@ -1,0 +1,41 @@
+<%= form_for(@advance) do |f| %>
+  <% if @advance.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@advance.errors.count, "error") %> prohibited this advance from being saved:</h2>
+
+      <ul>
+      <% @advance.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :date_advance %><br>
+    <%= f.date_select :date_advance %>
+  </div>
+  <div class="field">
+    <%= f.label :client_id %><br>
+    <%= f.select( :client_id, Client.order(:name).collect {|c| [c.name, c.id]} , {include_blank: true}, {class: "form-control"} )%>
+  </div>
+  <div class="field">
+    <%= f.label :price %><br>
+    <%= f.text_field :price %>
+  </div>
+  <div class="field">
+    <%= f.label :balance %><br>
+    <%= f.text_field :balance %>
+  </div>
+  <div class="field">
+    <%= f.label :number_parts %><br>
+    <%= f.number_field :number_parts %>
+  </div>
+  <div class="field">
+    <%= f.label :percent %><br>
+    <%= f.text_field :percent %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

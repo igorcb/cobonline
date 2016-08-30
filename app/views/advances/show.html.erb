@@ -1,0 +1,70 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>City:</strong>
+  <%= @advance.client.city.name %>
+</p>
+
+
+<p>
+  <strong>Client:</strong>
+  <%= @advance.client.name %>
+</p>
+
+<p>
+  <strong>Date advance:</strong>
+  <%= @advance.date_advance %>
+</p>
+
+<p>
+  <strong>Price:</strong>
+  <%= @advance.price %>
+</p>
+
+<p>
+  <strong>Balance:</strong>
+  <%= @advance.balance %>
+</p>
+
+<p>
+  <strong>Number parts:</strong>
+  <%= @advance.number_parts %>
+</p>
+
+<p>
+  <strong>Percent:</strong>
+  <%= @advance.percent %>
+</p>
+
+<%= link_to 'Edit', edit_advance_path(@advance) %> |
+<%= link_to 'Back', advances_path %>
+
+
+<table>
+  <thead>
+    <tr>
+      <th>Parts</th>
+      <th>Due Date</th>
+      <th>Price</th>
+      <th>Date payment</th>
+      <th>Value payment</th>
+      <th>Dalay</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @advance.item_advances.each do |item| %>
+      <tr>
+        <td><%= item.parts %></td>
+        <td><%= item.due_date %></td>
+        <td><%= item.price %></td>
+        <td><%= item.date_payment %></td>
+        <td><%= item.valor_payment %></td>
+        <td><%= item.dalay %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
