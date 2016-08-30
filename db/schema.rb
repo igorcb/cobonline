@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160830153210) do
+ActiveRecord::Schema.define(version: 20160830155026) do
 
   create_table "cities", force: :cascade do |t|
     t.string   "name",       limit: 100, null: false
@@ -20,5 +20,24 @@ ActiveRecord::Schema.define(version: 20160830153210) do
   end
 
   add_index "cities", ["name"], name: "index_cities_on_name", unique: true
+
+  create_table "clients", force: :cascade do |t|
+    t.integer  "city_id"
+    t.string   "name",       limit: 100, null: false
+    t.string   "fone",       limit: 20,  null: false
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
+
+  add_index "clients", ["city_id"], name: "index_clients_on_city_id"
+
+  create_table "holidays", force: :cascade do |t|
+    t.string   "name",         null: false
+    t.date     "date_holiday", null: false
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
+
+  add_index "holidays", ["date_holiday"], name: "index_holidays_on_date_holiday", unique: true
 
 end
