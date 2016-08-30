@@ -14,9 +14,11 @@
 ActiveRecord::Schema.define(version: 20160830153210) do
 
   create_table "cities", force: :cascade do |t|
-    t.string   "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string   "name",       limit: 100, null: false
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
   end
+
+  add_index "cities", ["name"], name: "index_cities_on_name", unique: true
 
 end
