@@ -1,0 +1,21 @@
+<%= form_for(@item_advance) do |f| %>
+  <%#= hidden_field_tag 'parcela_id', "#{@item_advance.id}" %>
+    <strong>Cliente: </strong> <%= @item_advance.client.name %> <br />
+    <strong>Dt Empres: </strong> <%= @item_advance.advance.date_advance.to_s %> <br />
+    <strong>Parcela: </strong> <%= @item_advance.parts %> <br />
+    <strong>Vencimento: </strong> <%= @item_advance.due_date.to_s %> <br />
+    <strong>Valor:</strong> <%= @item_advance.price.to_f %> <br />
+    <strong>Devedor:</strong> <%= @item_advance.advance.saldo_devedor.to_f %> <br />
+    <strong>Atraso:</strong> <%#= @item_advance.atraso.to_f %> <br />
+    <strong>Diferença:</strong> <%#= @item_advance.diferenca.to_f %> <br />
+
+    <div>
+      <strong>Valor Pago:</strong>
+      <%= number_field_tag :valor_payment, nil, class: "form-control" %>
+    </div>
+
+    <div>
+      <%= f.submit "Baixar", class: "btn btn-primary" %>
+    </div>
+
+<% end %>

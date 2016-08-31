@@ -1,0 +1,36 @@
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">Total Cobranca</h3>
+  </div>
+  <div class="panel-body">
+    Total Diária: <%#= @item_advances.sum('valor')%> <br />
+    Total Cobrado: <%#= @item_advances.sum('valor_pago')%> <br />
+  </div>
+ 
+</div>
+
+<% @item_advances.each do |item| %> 
+   <% if item.date_payment.nil? %>
+      <div class="panel panel-danger">
+        <div class="panel-heading">
+          <h3 class="panel-title"><%= link_to item.client.name, edit_item_advance_path(item) %></h3>
+        </div>
+          <div class="panel-body">
+            Venc: <%= item.due_date.to_s %> | Valor: <%= item.price.to_f %> <br />
+            Dt. Pgto: <%= item.date_payment.to_s %> | Valor Pago: <%= item.valor_payment.to_f %>
+          </div>
+      </div>
+      <% else %>
+      <div class="panel panel-info">
+        <div class="panel-heading">
+          <h3 class="panel-title"><%= item.client.name %></h3>
+        </div>
+        <div class="panel-body">
+            Venc: <%= item.due_date.to_s %> | Valor: <%= item.price.to_f %> <br />
+            Dt. Pgto: <%= item.date_payment.to_s %> | Valor Pago: <%= item.valor_payment.to_f %>          
+        </div>
+       
+     </div>
+   <% end %>
+<% end %>
+

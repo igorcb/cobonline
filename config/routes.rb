@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :item_advances
   resources :advances
   resources :clients
   resources :holidays
