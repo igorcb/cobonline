@@ -6,7 +6,7 @@ class Advance < ActiveRecord::Base
   validates :client_id, presence: true
   validates :date_advance, presence: true
   validates :price, presence: true
-  validates :balance, presence: true
+  #validates :balance, presence: true
   validates :number_parts, presence: true
 
   after_create :generate_item
