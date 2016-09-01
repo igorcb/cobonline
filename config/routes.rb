@@ -10,6 +10,8 @@ Rails.application.routes.draw do
 
   # You can have the root of your site routed with "root"
   root 'item_advances#index'
+  #root :to => redirect("/auth/login")
+  #root :to => redirect("/users/sign_in")
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

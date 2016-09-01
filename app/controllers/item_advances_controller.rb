@@ -1,6 +1,6 @@
 class ItemAdvancesController < ApplicationController
   #before_action :signed_in_user
-
+  before_action :authenticate_user!
   #respond_to :html
 
   def index
