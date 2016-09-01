@@ -1,0 +1,39 @@
+        <!-- Fixed navbar -->
+        <nav class="navbar navbar-inverse navbar-fixCobOnlineed-top shadow">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navabar">
+                    <span class="sr-only">Toggle Navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    </button>
+                    <!-- script to remove internal banner when user is logged in and in the root_path -->
+                    <% if user_signed_in? and current_page?('/') %>
+                        <%= link_to "CobOnline", root_path, class: "navbar-brand" %>
+                    <% else %>
+                        <%= link_to "CobOnline", root_path, class: "navbar-brand" %>
+                    <% end %>  
+                </div>
+                <div id="navbar" class="navbar-collapse collapse">
+                    <% if user_signed_in? %>
+                      <% if current_user.admin? %>
+                        <%= render "layouts/header_admin" %>
+                      <% else %>
+                        <%= render "layouts/header_user" %>
+                      <% end %>
+                    <% end %>   
+                    <ul class="nav navbar-nav navbar-right">
+                      <% if user_signed_in? %>
+                        <li><%= link_to '<i class="fa fa-sign-out"></i> Logout'.html_safe, destroy_user_session_path, method: "delete" %></li>
+                      <% else %>                  
+                        <li><a href="#about"><i class="fa fa-group"></i> Sobre</a></li>
+                        <li><a href="#contact"><i class="fa fa-phone"></i> Contato</a></li>
+                        <li><%= link_to '<i class="fa fa-sign-in"></i> Login'.html_safe, new_user_session_path %></li>
+                      <% end %>                    
+                    </ul>
+                </div>
+                <!-- /.nav-collapse -->
+            </div>
+        </nav>
+        <!-- /.fixed navbar -->
