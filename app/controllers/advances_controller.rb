@@ -1,5 +1,6 @@
 class AdvancesController < ApplicationController
   before_action :authenticate_user!
+  before_action :user_admin
   before_action :set_advance, only: [:show, :edit, :update, :destroy]
 
   # GET /advances
@@ -73,4 +74,6 @@ class AdvancesController < ApplicationController
       #params.require(:advance).permit(:date_advance, :client_id, :price, :balance, :number_parts, :percent)
       params.require(:advance).permit(:date_advance, :client_id, :price, :number_parts, :percent)
     end
+
+
 end
