@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160901192323) do
+ActiveRecord::Schema.define(version: 20160901201042) do
 
   create_table "advances", force: :cascade do |t|
     t.integer  "client_id"
@@ -41,6 +41,7 @@ ActiveRecord::Schema.define(version: 20160901192323) do
     t.string   "fone",       limit: 20
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
+    t.string   "district"
   end
 
   add_index "clients", ["city_id"], name: "index_clients_on_city_id", using: :btree
