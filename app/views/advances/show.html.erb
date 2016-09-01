@@ -3,10 +3,7 @@
 <p>
   <strong>City:</strong>
   <%= @advance.client.city.name %>
-</p>
-
-
-<p>
+  -
   <strong>Client:</strong>
   <%= @advance.client.name %>
 </p>
@@ -19,21 +16,25 @@
 <p>
   <strong>Price:</strong>
   <%= @advance.price %>
-</p>
-
-<p>
+  -
   <strong>Balance:</strong>
-  <%= @advance.saldo_devedor %>
+  <%= @advance.balance %>
+  -
+  <strong>Payd:</strong>
+  <%= @advance.payd %>
 </p>
 
 <p>
   <strong>Number parts:</strong>
   <%= @advance.number_parts %>
+  -
+  <strong>Percent:</strong>
+  <%= @advance.percent %>
 </p>
 
 <p>
-  <strong>Percent:</strong>
-  <%= @advance.percent %>
+  <strong>Status:</strong>
+  <%= @advance.name_status %>
 </p>
 
 <%= link_to 'Edit', edit_advance_path(@advance) %> |

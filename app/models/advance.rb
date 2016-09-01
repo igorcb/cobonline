@@ -11,7 +11,29 @@ class Advance < ActiveRecord::Base
 
   after_create :generate_item
 
+  module TypeStatus
+    ABERTO = 0
+    FECHADO = 1
+  end
+
+  def name_status
+    case self.status
+      when 0  then "Aberto"
+      when 1  then "Fechado"
+    else "Nao Definido"
+    end
+  end
+
   def generate_item
+    # Nao da certo deletar as parcelas quando alterar os dados do emprestimo
+    # pq quando for atulizar o status de quitacao pode entrar na validacao
+
+    # verifica se tem parcela paga, se tiver nao deixa gerar novas parcelas
+    # if has_paid? == false
+    #   ">>>>>>>>>>>>>>>> nao existe parcelas pagas"
+    #   self.item_advances.destroy_all 
+    # end
+
   	valor_parcela = self.price / self.number_parts
   	n_da_parcela = 1
   	data = self.date_advance + 1.day
@@ -26,7 +48,16 @@ class Advance < ActiveRecord::Base
     end
   end
 
-  def saldo_devedor
-    (self.price - self.item_advances.sum('value_payment')).to_f
+  def balance
+    (self.price - self.item_advances.sum(:value_payment)).to_f
   end
+
+  def payd
+    self.item_advances.sum(:value_payment).to_f
+  end
+
+  # def has_paid?
+  #   retorno = payd != 0.00
+  #   puts ">>>>>>>>>>>>>>> payd?: #{retorno}"
+  # end
 end

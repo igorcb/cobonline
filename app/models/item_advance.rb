@@ -7,7 +7,7 @@ class ItemAdvance < ActiveRecord::Base
   def baixa_parcela(date, value)
   	last_parts = self.advance.item_advances.last
   	advance = self.advance
-  	saldo = advance.saldo_devedor.to_f 
+  	saldo = advance.balance.to_f 
     puts ">>>>>>>>>>>>>>> venc: #{last_parts.due_date}"
     puts ">>>>>>>>>>>>>>> saldo: #{(saldo).to_f}"
     data_pagamemto = last_parts.due_date
@@ -19,9 +19,9 @@ class ItemAdvance < ActiveRecord::Base
     	valor_parcela = last_parts.price
     	data = proximo_dia_util(last_parts.due_date + 1.day)
     	advance.item_advances.create!(parts: "#{parcela}/#{advance.number_parts}" , price: valor_parcela, due_date: data, dalay: 0)
-    
     else
     	puts ">>>>>>>>>>>>>>> emprestimo quitado com sucesso."
+      advance.update_attributes(status: Advance::TypeStatus::FECHADO)
     end
   end
 

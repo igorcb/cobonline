@@ -5,10 +5,9 @@
     <strong>Parcela: </strong> <%= @item_advance.parts %> <br />
     <strong>Vencimento: </strong> <%= @item_advance.due_date.to_s %> <br />
     <strong>Valor:</strong> <%= @item_advance.price.to_f %> <br />
-    <strong>Devedor:</strong> <%= @item_advance.advance.saldo_devedor.to_f %> <br />
-    <strong>Atraso:</strong> <%#= @item_advance.atraso.to_f %> <br />
-    <strong>Diferença:</strong> <%#= @item_advance.diferenca.to_f %> <br />
-
+    <strong>Saldo Devedor:</strong> <%= @item_advance.advance.balance.to_f %> <br />
+<!--     <strong>Atraso:</strong> <%#= @item_advance.atraso.to_f %> <br /> -->
+ 
     <div>
       <strong>Valor Pago:</strong>
       <%= number_field_tag :value_payment, nil, class: "form-control" %>
