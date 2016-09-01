@@ -1,4 +1,5 @@
 class AdvancesController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_advance, only: [:show, :edit, :update, :destroy]
 
   # GET /advances
