@@ -27,6 +27,6 @@ class Advance < ActiveRecord::Base
   end
 
   def saldo_devedor
-    (self.price - self.item_advances.sum('valor_payment')).to_f
+    (self.price - self.item_advances.sum('value_payment')).to_f
   end
 end

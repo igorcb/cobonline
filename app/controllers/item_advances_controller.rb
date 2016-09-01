@@ -13,14 +13,14 @@ class ItemAdvancesController < ApplicationController
   end
 
   def update
-    if params[:valor_payment].blank?
+    if params[:value_payment].blank?
       redirect_to select_client_path, :flash => { :danger => "Informe o valor da parcela" } 
       return
     end 
     @item_advance = ItemAdvance.find(params[:id])
     respond_to do |format|
-      if @item_advance.update_attributes(date_payment: Date.today.to_s, valor_payment: params[:valor_payment])
-        @item_advance.baixa_parcela(Date.today.to_s, params[:valor_payment].to_f)
+      if @item_advance.update_attributes(date_payment: Date.today.to_s, value_payment: params[:value_payment])
+        @item_advance.baixa_parcela(Date.today.to_s, params[:value_payment].to_f)
         flash[:success] = "Parcela foi atualizada com sucesso."
         #format.html { redirect_to item_advances_path, success: 'ItemAdvance was successfully updated.' }
         #format.html { redirect_to select_client_path }
