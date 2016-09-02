@@ -55,7 +55,7 @@
   </thead>
 
   <tbody>
-    <% @advance.item_advances.each do |item| %>
+    <% @advance.item_advances.order_asc.each do |item| %>
       <tr>
         <td><%= item.parts %></td>
         <td><%= item.due_date %></td>

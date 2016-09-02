@@ -4,6 +4,9 @@ class ItemAdvance < ActiveRecord::Base
   belongs_to :advance
   has_one :client, through: :advance
 
+  scope :order_asc, -> { order(due_date: :asc) }
+  scope :order_desc, -> { order(due_date: :desc) }
+
   def baixa_parcela(date, value)
   	last_parts = self.advance.item_advances.last
   	advance = self.advance
