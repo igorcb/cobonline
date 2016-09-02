@@ -11,6 +11,10 @@ class Advance < ActiveRecord::Base
 
   after_create :generate_item
 
+  scope :order_asc, -> { order(date_advance: :asc) }
+  scope :order_desc, -> { order(date_advance: :desc) }
+
+
   module TypeStatus
     ABERTO = 0
     FECHADO = 1

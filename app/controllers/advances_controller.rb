@@ -6,7 +6,7 @@ class AdvancesController < ApplicationController
   # GET /advances
   # GET /advances.json
   def index
-    @advances = Advance.all
+    @advances = Advance.order_desc
   end
 
   # GET /advances/1
