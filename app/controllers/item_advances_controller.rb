@@ -18,7 +18,7 @@ class ItemAdvancesController < ApplicationController
     end 
     @item_advance = ItemAdvance.find(params[:id])
     respond_to do |format|
-      if @item_advance.update_attributes(date_payment: Date.today.to_s, value_payment: params[:value_payment])
+      if @item_advance.update_attributes(date_payment: Date.today.to_s, value_payment: params[:value_payment], note: params[:note])
         @item_advance.baixa_parcela(Date.today.to_s, params[:value_payment].to_f)
         flash[:success] = "Parcela foi atualizada com sucesso."
         #format.html { redirect_to item_advances_path, success: 'ItemAdvance was successfully updated.' }
@@ -29,5 +29,11 @@ class ItemAdvancesController < ApplicationController
       end
     end
   end  
+
+  #private
+    # def advance_params
+    #   #params.require(:advance).permit(:date_advance, :client_id, :price, :balance, :number_parts, :percent)
+    #   params.require(:item_advance).permit(:value_payment, :date_payment, :note)
+    # end
 
 end

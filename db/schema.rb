@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160901201042) do
+ActiveRecord::Schema.define(version: 20160902014259) do
 
   create_table "advances", force: :cascade do |t|
     t.integer  "client_id"
@@ -65,6 +65,7 @@ ActiveRecord::Schema.define(version: 20160901201042) do
     t.decimal  "dalay",         precision: 9, scale: 2, null: false
     t.datetime "created_at",                            null: false
     t.datetime "updated_at",                            null: false
+    t.string   "note"
   end
 
   add_index "item_advances", ["advance_id"], name: "index_item_advances_on_advance_id", using: :btree
