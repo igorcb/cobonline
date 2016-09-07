@@ -13,8 +13,9 @@
       <th>Payd</th>
       <th>Qty Parts</th>
       <th>Percent</th>
+      <th>Lucre</th>
       <th>Status</th>
-      <th colspan="3"></th>
+      <th colspan="3">Options</th>
     </tr>
   </thead>
 
@@ -29,6 +30,7 @@
         <td><%= advance.payd %></td>
         <td><%= advance.number_parts %></td>
         <td><%= advance.percent %></td>
+        <td><%= advance.lucre %></td>
         <td><%= advance.name_status %></td>
         <td><%= link_to 'Show', advance %></td>
         <td><%= link_to 'Edit', edit_advance_path(advance) %></td>
