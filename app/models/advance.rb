@@ -13,6 +13,7 @@ class Advance < ActiveRecord::Base
 
   scope :order_asc, -> { order(date_advance: :asc) }
   scope :order_desc, -> { order(date_advance: :desc) }
+  scope :advances_open, -> { where(status: TypeStatus::ABERTO) }
 
 
   module TypeStatus
@@ -58,6 +59,14 @@ class Advance < ActiveRecord::Base
 
   def payd
     self.item_advances.sum(:value_payment).to_f
+  end
+
+  def lucre
+    (self.price * self.percent) / 100
+  end
+
+  def self.total_lucre
+    Advance.advances_open.sum("(price * percent) / 100")
   end
 
   # def has_paid?
