@@ -10,7 +10,11 @@
                     </button>
                     <!-- script to remove internal banner when user is logged in and in the root_path -->
                     <% if user_signed_in? and current_page?('/') %>
-                        <%= link_to "CobOnline", root_path, class: "navbar-brand" %>
+                        <% if current_user.admin?  %> 
+                          <%= link_to "CobOnline", dashboard_path, class: "navbar-brand" %>
+                        <% else %>
+                          <%= link_to "CobOnline", root_path, class: "navbar-brand" %>
+                        <% end %>
                     <% else %>
                         <%= link_to "CobOnline", root_path, class: "navbar-brand" %>
                     <% end %>  
