@@ -1,0 +1,23 @@
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">Summary</h3>
+  </div>
+  <div class="panel-body">
+    Advances: <%= Advance.advances_open.sum(:price) %> <br />
+       Lucre: <%= Advance.total_lucre %> <br />
+  </div>
+ 
+</div>
+
+<h3>Summary by daily City</h3>
+<% @item_advances.each do |item| %> 
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h3 class="panel-title"><%= item.cidade %></h3>
+    </div>
+    <div class="panel-body">
+      Total Diária:  <%= item.valor %> <br />
+      Total Cobrado: <%= item.valor_pago %> <br />
+    </div>
+  </div>
+<% end %>

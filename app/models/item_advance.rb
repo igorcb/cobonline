@@ -3,6 +3,7 @@ class ItemAdvance < ActiveRecord::Base
 	include Util
   belongs_to :advance
   has_one :client, through: :advance
+  has_one :city, through: :client
 
   scope :order_asc, -> { order(due_date: :asc) }
   scope :order_desc, -> { order(due_date: :desc) }
