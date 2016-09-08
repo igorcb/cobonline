@@ -4,7 +4,8 @@ class ItemAdvancesController < ApplicationController
 
   def index
     #@item_advances = ItemAdvance.includes(:cliente).where("item_advances.empresa_id = ? and DATE(item_advances.data_vencimento) = ? and clientes.cidade = ?", current_user.empresa_id, Date.today.to_s, current_user.cidade.nome).order(order_by(current_user.empresa_id)) 
-    @item_advances = ItemAdvance.includes(:client).where("DATE(item_advances.due_date) = ? ", Date.today.to_s)
+    #@item_advances = ItemAdvance.includes(:client).where("DATE(item_advances.due_date) = ? ", Date.today.to_s)
+    @item_advances = ItemAdvance.joins(:advance).includes(:client).where("DATE(item_advances.due_date) = ? and advances.status = ? ", Date.today.to_s, Advance::TypeStatus::ABERTO)
   end
 
   def edit
