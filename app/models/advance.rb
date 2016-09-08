@@ -69,6 +69,10 @@ class Advance < ActiveRecord::Base
     Advance.advances_open.sum("(price * percent) / 100")
   end
 
+  def self.total_balance
+    Advance.advances_open.sum(:price) - Advance.advances_open.joins(:item_advances).sum('item_advances.value_payment')
+  end
+
   # def has_paid?
   #   retorno = payd != 0.00
   #   puts ">>>>>>>>>>>>>>> payd?: #{retorno}"

@@ -4,6 +4,7 @@
   </div>
   <div class="panel-body">
     Advances: <%= Advance.advances_open.sum(:price) %> <br />
+    Balance: <%= Advance.total_balance%> <br />
        Lucre: <%= Advance.total_lucre %> <br />
   </div>
  
