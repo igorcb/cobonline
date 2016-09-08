@@ -18,8 +18,8 @@ class ItemAdvancesController < ApplicationController
     end 
     @item_advance = ItemAdvance.find(params[:id])
     respond_to do |format|
-      if @item_advance.update_attributes(date_payment: Date.today.to_s, value_payment: params[:value_payment], note: params[:note])
-        @item_advance.baixa_parcela(Date.current_date.to_s, params[:value_payment].to_f)
+      if @item_advance.update_attributes(date_payment: Date.current.to_s, value_payment: params[:value_payment], note: params[:note])
+        @item_advance.baixa_parcela(Date.current.to_s, params[:value_payment].to_f)
         flash[:success] = "Parcela foi atualizada com sucesso."
         #format.html { redirect_to item_advances_path, success: 'ItemAdvance was successfully updated.' }
         #format.html { redirect_to select_client_path }
@@ -27,6 +27,16 @@ class ItemAdvancesController < ApplicationController
       else
         format.html { render action: 'edit' }
       end
+    end
+  end  
+
+  def destroy
+    @item_advance = ItemAdvance.find(params[:id])
+    advance = @item_advance.advance
+    @item_advance.destroy
+    respond_to do |format|
+      format.html { redirect_to advance, notice: 'ItemAdvance destroyed was successfully.' }
+      format.json { head :no_content }
     end
   end  
 
