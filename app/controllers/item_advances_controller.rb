@@ -30,15 +30,15 @@ class ItemAdvancesController < ApplicationController
     end
   end  
 
-  def destroy
-    @item_advance = ItemAdvance.find(params[:id])
-    advance = @item_advance.advance
-    @item_advance.destroy
-    respond_to do |format|
-      format.html { redirect_to advance, notice: 'ItemAdvance destroyed was successfully.' }
-      format.json { head :no_content }
-    end
-  end  
+  # def destroy
+  #   @item_advance = ItemAdvance.find(params[:id])
+  #   advance = @item_advance.advance
+  #   @item_advance.destroy
+  #   respond_to do |format|
+  #     format.html { redirect_to advance, notice: 'ItemAdvance destroyed was successfully.' }
+  #     format.json { head :no_content }
+  #   end
+  # end  
 
   #private
     # def advance_params
