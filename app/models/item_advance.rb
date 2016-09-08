@@ -12,10 +12,11 @@ class ItemAdvance < ActiveRecord::Base
   	last_parts = self.advance.item_advances.last
   	advance = self.advance
   	saldo = advance.balance.to_f 
-    puts ">>>>>>>>>>>>>>> venc: #{last_parts.due_date}"
+    puts ">>>>>>>>>>>>>>>> venc: #{last_parts.due_date}"
     puts ">>>>>>>>>>>>>>> saldo: #{(saldo).to_f}"
-    data_pagamemto = last_parts.due_date
-    if ((last_parts.due_date == data_pagamemto) && (saldo > 0.00)) 
+    data_pagamemto = date
+    puts ">>>>>>>> Date Current: #{date.to_s}"
+    if ((last_parts.due_date == data_pagamemto) && (saldo > 0.00))
     	puts ">>>>>>>>>>>>>>> generate_new_parts"
     	n_da_parcela = last_parts.parts
     	parcela = n_da_parcela[0..2]
@@ -23,9 +24,11 @@ class ItemAdvance < ActiveRecord::Base
     	valor_parcela = last_parts.price
     	data = proximo_dia_util(last_parts.due_date + 1.day)
     	advance.item_advances.create!(parts: "#{parcela}/#{advance.number_parts}" , price: valor_parcela, due_date: data, dalay: 0)
-    else
+    elsif ((saldo == 0.00) || (saldo < 0.00))
     	puts ">>>>>>>>>>>>>>> emprestimo quitado com sucesso."
-      advance.update_attributes(status: Advance::TypeStatus::FECHADO)
+      #advance.update_attributes(status: Advance::TypeStatus::FECHADO)
+    else
+      puts ">>>>>>>>>>>>>>> nao faz nada."
     end
   end
 
