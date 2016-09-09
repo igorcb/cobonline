@@ -63,6 +63,11 @@ class AdvancesController < ApplicationController
     end
   end
 
+  def recalculation
+    puts ">>>>>>>>>>>>>>> Recalculation"
+    redirect_to advances_path
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_advance
