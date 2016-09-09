@@ -1,7 +1,7 @@
 class AdvancesController < ApplicationController
   before_action :authenticate_user!
   before_action :user_admin
-  before_action :set_advance, only: [:show, :edit, :update, :destroy]
+  before_action :set_advance, only: [:show, :edit, :update, :destroy, :recalculation]
 
   # GET /advances
   # GET /advances.json
@@ -64,7 +64,8 @@ class AdvancesController < ApplicationController
   end
 
   def recalculation
-    puts ">>>>>>>>>>>>>>> Recalculation"
+    puts ">>>>>>>>>>>>>>> Recalculation Advance ID: #{@advance.id}"
+    @advance.recalculation
     redirect_to advances_path
   end
 

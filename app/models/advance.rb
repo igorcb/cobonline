@@ -74,6 +74,22 @@ class Advance < ActiveRecord::Base
     Advance.advances_open.sum(:price) - Advance.advances_open.joins(:item_advances).sum('item_advances.value_payment')
   end
 
+  def recalculation
+    #inicializando as variaveis
+    percent = self.percent
+    number_parts = self.number_parts
+    price = self.balance + ((self.balance * percent) / 100)
+    client_id = self.client_id
+    date_advance = Date.current
+
+    ActiveRecord::Base.transaction do
+      self.update_attributes(status: TypeStatus::FECHADO)
+      Advance.create!(client_id: client_id, date_advance: date_advance, price: price, percent: percent, number_parts: number_parts, status: TypeStatus::ABERTO)
+      puts ">>>>>>>>>>>>>>>>> recalculo efetuado com sucesso."
+    end
+    
+  end
+
   # def has_paid?
   #   retorno = payd != 0.00
   #   puts ">>>>>>>>>>>>>>> payd?: #{retorno}"
