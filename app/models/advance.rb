@@ -2,6 +2,7 @@ require 'util'
 class Advance < ActiveRecord::Base
 	include Util
   belongs_to :client
+  has_one :city, through: :client
   has_many :item_advances, dependent: :delete_all
   validates :client_id, presence: true
   validates :date_advance, presence: true
@@ -11,8 +12,8 @@ class Advance < ActiveRecord::Base
 
   after_create :generate_item
 
-  scope :order_asc, -> { order(date_advance: :asc) }
-  scope :order_desc, -> { order(date_advance: :desc) }
+  scope :order_asc, -> { includes(:client, :city).order(date_advance: :asc) }
+  scope :order_desc, -> { includes(:client, :city).order(date_advance: :desc) }
   scope :advances_open, -> { where(status: TypeStatus::ABERTO) }
 
 
