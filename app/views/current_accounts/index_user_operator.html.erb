@@ -1,0 +1,37 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Current Accounts</h1>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>City</th>
+      <th>Cost</th>
+      <th>Date</th>
+      <th>Type</th>
+      <th>Price</th>
+      <th>Historic</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @current_accounts.each do |current_account| %>
+      <tr>
+        <td><%= current_account.city.name %></td>
+        <td><%= current_account.cost.name %></td>
+        <td><%= date_br(current_account.date_ocurrence) %></td>
+        <td><%= current_account.credito_debito %></td>
+        <td><%= current_account.price %></td>
+        <td><%= current_account.historic %></td>
+        <td><%= link_to 'Show', current_account %></td>
+        <td><%= link_to 'Edit', edit_current_account_path(current_account) %></td>
+        <td><%= link_to 'Destroy', current_account, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Current account', new_current_account_path %>

@@ -30,5 +30,9 @@
   <%= @current_account.historic %>
 </p>
 
-<%= link_to 'Edit', edit_current_account_path(@current_account) %> |
-<%= link_to 'Back', current_accounts_path %>
+<%= link_to 'Edit', edit_current_account_path(@current_account), class: "btn btn-primary btn-sm btn-block" %>
+<% if current_user.admin? %> 
+  <%= link_to "Back", current_accounts_path, class: "btn btn-default btn-sm btn-block" %>
+<% else %>
+  <%= link_to "Back", index_user_operator_current_accounts_path, class: "btn btn-default btn-sm btn-block" %>
+<% end %>

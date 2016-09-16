@@ -8,6 +8,10 @@ class CurrentAccountsController < ApplicationController
     @current_accounts = CurrentAccount.all
   end
 
+  def index_user_operator
+    @current_accounts = CurrentAccount.where(city_id: current_user.city_id)
+  end
+
   # GET /current_accounts/1
   # GET /current_accounts/1.json
   def show

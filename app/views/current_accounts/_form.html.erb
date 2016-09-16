@@ -11,18 +11,29 @@
     </div>
   <% end %>
 
-  <div class="form-group">
-    <%= f.label :city_id %><br>
-    <%= f.select(:city_id, City.order(:name).collect {|c| [c.name, c.id]}, {include_blank: "Select City"}, {class: "form-control"} )%>
-  </div>
+  <% if current_user.admin? %> 
+    <div class="form-group">
+      <%= f.label :city_id %><br>
+      <%= f.select(:city_id, City.order(:name).collect {|c| [c.name, c.id]}, {include_blank: "Select City"}, {class: "form-control"} )%>
+    </div>
+  <% else %>
+    <div class="form-group">
+      <%= f.label :city_id %><br>
+      <%= f.hidden_field :city_id, value: current_user.city_id %>
+      <%= f.select(:city_id, City.order(:name).collect {|c| [c.name, c.id]}, {selected: current_user.city_id}, {disabled: true, class: "form-control"} )%>
+    </div>
+  <% end %>
   <div class="form-group">
     <%= f.label :cost_id %><br>
     <%= f.select(:cost_id, Cost.order(:name).collect {|c| [c.name, c.id]}, {include_blank: "Select Cost"}, {class: "form-control"} )%>
   </div>
   <div class="form-group">
-    <%= f.label :date_ocurrence %><br>
-    <%#= f.date_select :date_ocurrence %>
-    <%= f.text_field :date_ocurrence, value: date_br(DateTime.now), class: "form-control datepicker" %>
+    <%= f.label :date_ocurrence, "Data" %><br>
+    <% if @current_account.new_record? %> 
+      <%= f.text_field :date_ocurrence, value: date_br(DateTime.now), class: "form-control datepicker" %>
+    <% else %>
+      <%= f.text_field :date_ocurrence, value: date_br(@current_account.date_ocurrence), class: "form-control datepicker" %>
+    <% end %>
   </div>
   <div class="form-group">
     <%= f.label :type_launche %><br>
@@ -40,7 +51,11 @@
   <div class="actions">
     <%= f.submit "Save", class: "btn btn-primary btn-sm btn-block" %>
     <%= link_to "Show",  current_account_path(@current_account), class: "btn btn-info btn-sm btn-block" if !@current_account.new_record? %>
-    <%= link_to "Back", current_accounts_path, class: "btn btn-default btn-sm btn-block" %>
+    <% if current_user.admin? %> 
+      <%= link_to "Back", current_accounts_path, class: "btn btn-default btn-sm btn-block" %>
+    <% else %>
+      <%= link_to "Back", index_user_operator_current_accounts_path, class: "btn btn-default btn-sm btn-block" %>
+    <% end %>
   </div>
 
   <hr/>

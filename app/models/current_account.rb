@@ -2,6 +2,13 @@ class CurrentAccount < ActiveRecord::Base
   belongs_to :city
   belongs_to :cost
 
+  validates :city_id, presence: true
+  validates :cost_id, presence: true
+  validates :date_ocurrence, presence: true
+  validates :type_launche, presence: true
+  validates :price, presence: true
+  
+
   def credito_debito
   	case self.type_launche
   		when -1 then "Débito"
