@@ -28,10 +28,10 @@ ActiveRecord::Schema.define(version: 20160916123222) do
   add_index "advances", ["date_advance"], name: "index_advances_on_date_advance", using: :btree
 
   create_table "cities", force: :cascade do |t|
-    t.string   "name",       limit: 100, null: false
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
-    t.boolean  "geral"
+    t.string   "name",       limit: 100,                 null: false
+    t.datetime "created_at",                             null: false
+    t.datetime "updated_at",                             null: false
+    t.boolean  "geral",                  default: false
   end
 
   add_index "cities", ["name"], name: "index_cities_on_name", unique: true, using: :btree
