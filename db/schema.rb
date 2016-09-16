@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160916123222) do
+ActiveRecord::Schema.define(version: 20160916134006) do
 
   create_table "advances", force: :cascade do |t|
     t.integer  "client_id"
@@ -52,6 +52,20 @@ ActiveRecord::Schema.define(version: 20160916123222) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
+  create_table "current_accounts", force: :cascade do |t|
+    t.integer  "city_id"
+    t.integer  "cost_id"
+    t.date     "date_ocurrence"
+    t.integer  "type_launche"
+    t.decimal  "price"
+    t.string   "historic"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+  end
+
+  add_index "current_accounts", ["city_id"], name: "index_current_accounts_on_city_id", using: :btree
+  add_index "current_accounts", ["cost_id"], name: "index_current_accounts_on_cost_id", using: :btree
 
   create_table "holidays", force: :cascade do |t|
     t.string   "name",         null: false
@@ -98,5 +112,7 @@ ActiveRecord::Schema.define(version: 20160916123222) do
 
   add_foreign_key "advances", "clients"
   add_foreign_key "clients", "cities"
+  add_foreign_key "current_accounts", "cities"
+  add_foreign_key "current_accounts", "costs"
   add_foreign_key "item_advances", "advances"
 end

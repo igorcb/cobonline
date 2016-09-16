@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>City:</strong>
+  <%= @current_account.city.name %>
+</p>
+
+<p>
+  <strong>Cost:</strong>
+  <%= @current_account.cost.name %>
+</p>
+
+<p>
+  <strong>Date ocurrence:</strong>
+  <%= date_br(@current_account.date_ocurrence) %>
+</p>
+
+<p>
+  <strong>Type launche:</strong>
+  <%= @current_account.credito_debito %>
+</p>
+
+<p>
+  <strong>Price:</strong>
+  <%= @current_account.price %>
+</p>
+
+<p>
+  <strong>Historic:</strong>
+  <%= @current_account.historic %>
+</p>
+
+<%= link_to 'Edit', edit_current_account_path(@current_account) %> |
+<%= link_to 'Back', current_accounts_path %>

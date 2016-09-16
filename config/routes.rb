@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :current_accounts
   resources :costs
   match 'recalculation/:id' => "advances#recalculation", :as => 'recalculation', via: [:get]
   

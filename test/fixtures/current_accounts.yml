@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  city_id: 
+  cost_id: 
+  date_ocurrence: 2016-09-16
+  type_launche: 1
+  price: 9.99
+  historic: MyString
+
+two:
+  city_id: 
+  cost_id: 
+  date_ocurrence: 2016-09-16
+  type_launche: 1
+  price: 9.99
+  historic: MyString

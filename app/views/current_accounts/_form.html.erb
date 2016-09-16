@@ -1,0 +1,47 @@
+<%= form_for(@current_account) do |f| %>
+  <% if @current_account.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@current_account.errors.count, "error") %> prohibited this current_account from being saved:</h2>
+
+      <ul>
+      <% @current_account.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= f.label :city_id %><br>
+    <%= f.select(:city_id, City.order(:name).collect {|c| [c.name, c.id]}, {include_blank: "Select City"}, {class: "form-control"} )%>
+  </div>
+  <div class="form-group">
+    <%= f.label :cost_id %><br>
+    <%= f.select(:cost_id, Cost.order(:name).collect {|c| [c.name, c.id]}, {include_blank: "Select Cost"}, {class: "form-control"} )%>
+  </div>
+  <div class="form-group">
+    <%= f.label :date_ocurrence %><br>
+    <%#= f.date_select :date_ocurrence %>
+    <%= f.text_field :date_ocurrence, value: date_br(DateTime.now), class: "form-control datepicker" %>
+  </div>
+  <div class="form-group">
+    <%= f.label :type_launche %><br>
+    <%= f.select( :type_launche, select_credito_debito, {include_blank: false}, {class: "form-control"} )%>
+  </div>
+  <div class="form-group">
+    <%= f.label :price, "Valor" %><br>
+    <%= f.number_field :price, {class: "form-control"} %>
+  </div>
+  <div class="form-group">
+    <%= f.label :historic %><br>
+    <%= f.text_field :historic, {class: "form-control"} %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Save", class: "btn btn-primary btn-sm btn-block" %>
+    <%= link_to "Show",  current_account_path(@current_account), class: "btn btn-info btn-sm btn-block" if !@current_account.new_record? %>
+    <%= link_to "Back", current_accounts_path, class: "btn btn-default btn-sm btn-block" %>
+  </div>
+
+  <hr/>
+<% end %>
