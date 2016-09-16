@@ -2,7 +2,7 @@
 
 <h1>Listing Current Accounts</h1>
 
-<table>
+<table class="table table-striped">
   <thead>
     <tr>
       <th>City</th>
@@ -18,10 +18,10 @@
   <tbody>
     <% @current_accounts.each do |current_account| %>
       <tr>
-        <td><%= current_account.city %></td>
-        <td><%= current_account.cost %></td>
-        <td><%= current_account.date_ocurrence %></td>
-        <td><%= current_account.type_launche %></td>
+        <td><%= current_account.city.name %></td>
+        <td><%= current_account.cost.name %></td>
+        <td><%= date_br(current_account.date_ocurrence) %></td>
+        <td><%= current_account.credito_debito %></td>
         <td><%= current_account.price %></td>
         <td><%= current_account.historic %></td>
         <td><%= link_to 'Show', current_account %></td>
