@@ -1,4 +1,5 @@
 class CurrentAccountsController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_current_account, only: [:show, :edit, :update, :destroy]
 
   # GET /current_accounts
