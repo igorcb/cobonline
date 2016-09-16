@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :costs
   match 'recalculation/:id' => "advances#recalculation", :as => 'recalculation', via: [:get]
   
   devise_for :users

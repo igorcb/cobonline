@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160902014259) do
+ActiveRecord::Schema.define(version: 20160916123222) do
 
   create_table "advances", force: :cascade do |t|
     t.integer  "client_id"
@@ -31,6 +31,7 @@ ActiveRecord::Schema.define(version: 20160902014259) do
     t.string   "name",       limit: 100, null: false
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
+    t.boolean  "geral"
   end
 
   add_index "cities", ["name"], name: "index_cities_on_name", unique: true, using: :btree
@@ -45,6 +46,12 @@ ActiveRecord::Schema.define(version: 20160902014259) do
   end
 
   add_index "clients", ["city_id"], name: "index_clients_on_city_id", using: :btree
+
+  create_table "costs", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "holidays", force: :cascade do |t|
     t.string   "name",         null: false
