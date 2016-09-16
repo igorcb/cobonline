@@ -12,21 +12,23 @@ class ItemAdvance < ActiveRecord::Base
   	last_parts = self.advance.item_advances.last
   	advance = self.advance
   	saldo = advance.balance.to_f 
+    juros =  (saldo * self.advance.percent) / 100
     puts ">>>>>>>>>>>>>>>> venc: #{last_parts.due_date}"
     puts ">>>>>>>>>>>>>>> saldo: #{(saldo).to_f}"
     data_pagamemto = date
-    puts ">>>>>>>> Date Current: #{date.to_s}"
-    if ((last_parts.due_date == data_pagamemto) && (saldo > 0.00))
+    puts ">>>>>>>> Date Current: #{date.to_s} ----- #{last_parts.due_date.to_s} --- #{saldo.to_f}"
+    if ((last_parts.due_date.to_s == data_pagamemto.to_s) && (saldo > 0.00))
     	puts ">>>>>>>>>>>>>>> generate_new_parts"
     	n_da_parcela = last_parts.parts
     	parcela = n_da_parcela[0..2]
     	parcela = (parcela.to_i + 1).to_s.rjust(3, '0')
-    	valor_parcela = last_parts.price
+      puts ">>>>>>>>>>>>>>> juros: #{juros.to_f}"
+    	valor_parcela = last_parts.price + juros
     	data = proximo_dia_util(last_parts.due_date + 1.day)
     	advance.item_advances.create!(parts: "#{parcela}/#{advance.number_parts}" , price: valor_parcela, due_date: data, dalay: 0)
     elsif ((saldo == 0.00) || (saldo < 0.00))
     	puts ">>>>>>>>>>>>>>> emprestimo quitado com sucesso."
-      #advance.update_attributes(status: Advance::TypeStatus::FECHADO)
+      advance.update_attributes(status: Advance::TypeStatus::FECHADO)
     else
       puts ">>>>>>>>>>>>>>> nao faz nada."
     end
