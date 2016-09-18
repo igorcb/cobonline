@@ -11,16 +11,17 @@
     </div>
   <% end %>
 
-  <div class="field">
+  <div class="form-group">
     <%= f.label :name %><br>
     <%= f.text_field :name %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= f.check_box :geral, checked: f.object.geral %> Caixa Geral
   </div>
 
-  <div class="actions">
-    <%= f.submit %>
+  <div class="form-group">
+    <%= f.submit class: 'btn btn-primary btn-block'  %>
+    <%= link_to t('back'), cities_path, class: 'btn btn-default btn-block' %>
   </div>
 <% end %>
