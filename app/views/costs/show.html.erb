@@ -1,9 +1,11 @@
 <p id="notice"><%= notice %></p>
 
+<h3>Dados da Despesa</h3>
+
 <p>
   <strong>Name:</strong>
   <%= @cost.name %>
 </p>
 
-<%= link_to 'Edit', edit_cost_path(@cost) %> |
-<%= link_to 'Back', costs_path %>
+<%= link_to t('edit'), edit_cost_path(@cost) %> |
+<%= link_to t('back'), costs_path %>
