@@ -8,6 +8,10 @@ class CurrentAccount < ActiveRecord::Base
   validates :type_launche, presence: true
   validates :price, presence: true
   
+  module TypeLaunche
+    DEBITO = -1
+    CREDITO = 1
+  end
 
   def credito_debito
   	case self.type_launche

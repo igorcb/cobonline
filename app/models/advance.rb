@@ -11,11 +11,11 @@ class Advance < ActiveRecord::Base
   validates :number_parts, presence: true
 
   after_create :generate_item
+  after_create :generate_current_account
 
   scope :order_asc, -> { includes(:client, :city).order(date_advance: :asc) }
   scope :order_desc, -> { includes(:client, :city).order(date_advance: :desc) }
   scope :advances_open, -> { where(status: TypeStatus::ABERTO) }
-
 
   module TypeStatus
     ABERTO = 0
@@ -52,6 +52,15 @@ class Advance < ActiveRecord::Base
   	  	n_da_parcela = n_da_parcela + 1
     	end
     end
+  end
+
+  def generate_current_account
+    type_launche = CurrentAccount::TypeLaunche::DEBITO
+    cost = Cost::TypeCost::PAGAMENTO_EMPRESTIMO
+    city = self.city
+    price = self.price - self.lucre
+    historic = "PGTO DE EMPRESTIMO - #{self.client.name}"
+    CurrentAccount.create!(type_launche: type_launche , city_id: city.id, cost_id: cost, date_ocurrence: Date.today.to_s, price: price, historic: historic )
   end
 
   def balance
