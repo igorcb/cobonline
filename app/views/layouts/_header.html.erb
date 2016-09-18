@@ -29,11 +29,11 @@
                     <% end %>   
                     <ul class="nav navbar-nav navbar-right">
                       <% if user_signed_in? %>
-                        <li><%= link_to '<i class="fa fa-sign-out"></i> Logout'.html_safe, destroy_user_session_path, method: "delete" %></li>
+                        <li><%= link_to '<i class="fa fa-sign-out"></i> Sair   .'.html_safe, destroy_user_session_path, method: "delete" %></li>
                       <% else %>                  
                         <li><a href="#about"><i class="fa fa-group"></i> Sobre</a></li>
                         <li><a href="#contact"><i class="fa fa-phone"></i> Contato</a></li>
-                        <li><%= link_to '<i class="fa fa-sign-in"></i> Login'.html_safe, new_user_session_path %></li>
+                        <li><%= link_to '<i class="fa fa-sign-in"></i> Entrar'.html_safe, new_user_session_path %></li>
                       <% end %>                    
                     </ul>
                 </div>
