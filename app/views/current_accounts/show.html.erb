@@ -1,38 +1,40 @@
 <p id="notice"><%= notice %></p>
 
+<h3>Dados do lancamento do caixa</h3>
+
 <p>
-  <strong>City:</strong>
+  <strong><%= CurrentAccount.human_attribute_name('city') %>:</strong>
   <%= @current_account.city.name %>
 </p>
 
 <p>
-  <strong>Cost:</strong>
+  <strong><%= CurrentAccount.human_attribute_name('cost') %>:</strong>
   <%= @current_account.cost.name %>
 </p>
 
 <p>
-  <strong>Date ocurrence:</strong>
+  <strong><%= CurrentAccount.human_attribute_name('date_ocurrence') %>:</strong>
   <%= date_br(@current_account.date_ocurrence) %>
 </p>
 
 <p>
-  <strong>Type launche:</strong>
+  <strong><%= CurrentAccount.human_attribute_name('type') %>:</strong>
   <%= @current_account.credito_debito %>
 </p>
 
 <p>
-  <strong>Price:</strong>
+  <strong><%= CurrentAccount.human_attribute_name('price') %>:</strong>
   <%= @current_account.price %>
 </p>
 
 <p>
-  <strong>Historic:</strong>
+  <strong><%= CurrentAccount.human_attribute_name('historic') %>:</strong>
   <%= @current_account.historic %>
 </p>
 
-<%= link_to 'Edit', edit_current_account_path(@current_account), class: "btn btn-primary btn-sm btn-block" %>
+<%= link_to t("edit"), edit_current_account_path(@current_account), class: "btn btn-primary btn-sm btn-block" %>
 <% if current_user.admin? %> 
-  <%= link_to "Back", current_accounts_path, class: "btn btn-default btn-sm btn-block" %>
+  <%= link_to t("back"), current_accounts_path, class: "btn btn-default btn-sm btn-block" %>
 <% else %>
-  <%= link_to "Back", index_user_operator_current_accounts_path, class: "btn btn-default btn-sm btn-block" %>
+  <%= link_to t("back"), index_user_operator_current_accounts_path, class: "btn btn-default btn-sm btn-block" %>
 <% end %>
