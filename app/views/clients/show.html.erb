@@ -1,24 +1,24 @@
 <p id="notice"><%= notice %></p>
-
+<h3>Dados do Cliente</h3>
 <p>
-  <strong>City:</strong>
+  <strong><%= Client.human_attribute_name('city') %></strong>
   <%= @client.city.name %>
 </p>
 
 <p>
-  <strong>Name:</strong>
+  <strong><%= Client.human_attribute_name('name') %>:</strong>
   <%= @client.name %>
 </p>
 
 <p>
-  <strong>District:</strong>
+  <strong><%= Client.human_attribute_name('district') %>:</strong>
   <%= @client.district %>
 </p>
 
 <p>
-  <strong>Fone:</strong>
+  <strong><%= Client.human_attribute_name('fone') %></strong>
   <%= @client.fone %>
 </p>
 
-<%= link_to 'Edit', edit_client_path(@client) %> |
-<%= link_to 'Back', clients_path %>
+<%= link_to t('edit'), edit_client_path(@client) %> |
+<%= link_to t('back'), clients_path %>

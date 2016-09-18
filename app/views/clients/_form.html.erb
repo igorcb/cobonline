@@ -11,23 +11,24 @@
     </div>
   <% end %>
 
-  <div class="field">
+  <div class="form-group">
     <%= f.label :city_id %><br>
     <%= f.select( :city_id, City.order(:name).collect {|c| [c.name, c.id]} , {include_blank: true}, {class: "form-control"} )%>
   </div>
-  <div class="field">
+  <div class="form-group">
     <%= f.label :name %><br>
-    <%= f.text_field :name %>
+    <%= f.text_field :name, {class: "form-control"} %>
   </div>
-  <div class="field">
+  <div class="form-group">
     <%= f.label :fone %><br>
-    <%= f.text_field :fone %>
+    <%= f.text_field :fone, {class: "form-control"} %>
   </div>
-  <div class="field">
+  <div class="form-group">
     <%= f.label :district %><br>
-    <%= f.text_field :district %>
+    <%= f.text_field :district, {class: "form-control"} %>
   </div>
-  <div class="actions">
-    <%= f.submit %>
+  <div class="form-group">
+    <%= f.submit class: 'btn btn-primary btn-block'  %>
+    <%= link_to t('back'), clients_path, class: 'btn btn-default btn-block' %>
   </div>
 <% end %>
