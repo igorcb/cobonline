@@ -21,3 +21,8 @@
 
 en:
   hello: "Hello world"
+  cities:
+    index:
+      title: "Título"
+      name: "Nome"
+      list: "Listagem de Cidades"

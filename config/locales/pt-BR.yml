@@ -1,6 +1,103 @@
----
+# encoding: UTF-8
+# pt-BR translations for Devise
 pt-BR:
+  links:
+    dashboard: "Resumo Geral"
+    cities: "Cidades"
+    costs: "Despesas"
+    holidays: "Feriados"
+    clients: "Clientes"
+    advances: "Emprestimos"
+    cash: "Caixa"
+  show: "Exibir"
+  edit: "Editar"
+  destroy: "Deletar"
+  confirm: "Deseja apagar o registro"
+  back: "Listar Todos"
+  recalculation: "Recalcular"
+  options: "Opções"
+
+  city: "Cidade"
+  cities:
+    index:
+      title: "Listagem de Cidades"
+      new: "Incluir Cidade"
+    new:
+      title: "Nova Cidade"
+  costs:
+    index:
+      title: "Listagem de Despesas"
+      new: "Incluir Despesa"
+    new:
+      title: "Nova Despesa"
+  clients:
+    index:
+      title: "Listagem de Clientes"
+      new: "Incluir Cliente"
+    new:
+      title: "Novo Cliente"
+  advances:
+    index:
+      title: "Listagem de Emprestimos"
+      new: "Incluir Emprestimo"
+    new:
+      title: "Novo Emprestimo"
+  holidays:
+    index:
+      title: "Listagem de Feriados"
+      new: "Incluir Feriado"
+    new:
+      title: "Novo Feriado"
+  current_accounts:
+    index:
+      title: "Lancamentos do Caixa"
+      new: "Incluir Caixa"
+    new:
+      title: "Lancamento do Caixa"
   activerecord:
+    attributes:
+      advance:
+        city: "Cidade"
+        client_id: "Cliente"
+        client: "Cliente"
+        date_advance: "Data"
+        price: "Valor"
+        balance: "Saldo"
+        payd: "Vl.Pago"
+        number_parts: "Qtd Parc"
+        percent: "Perc"
+        lucre: "Lucro"
+      
+        parts: "Parcela"
+        due_date: "Vencimento"
+        price: "Valor"
+        date_payment: "Dt.Pgto"
+        value_payment: "Vl.Pago"
+        dalay: "Atraso"
+        note: "Obs"
+      city:
+        name: "Nome"
+      cost:
+        name: "Nome"
+      client:
+        city_id: "Cidade"
+        city: "Cidade"
+        name: "Nome"
+        district: "Bairro"
+        fone: "Telefone"
+      holiday:
+        name: "Nome"
+        date_holiday: "Data Feriado"
+      current_account:
+        city_id: "Cidade"
+        city: "Cidade"
+        cost_id: "Despesa"
+        cost: "Despesa"
+        date_ocurrence: "Data"
+        type_launche: "Tipo"
+        type: "Tipo"
+        price: "Valor"
+        historic: "Historico"
     errors:
       messages:
         record_invalid: 'A validação falhou: %{errors}'
@@ -145,9 +242,15 @@ pt-BR:
     select:
       prompt: Por favor selecione
     submit:
-      create: Criar %{model}
-      submit: Salvar %{model}
-      update: Atualizar %{model}
+      create: Salvar 
+      submit: Salvar 
+      update: Salvar
+      city:
+        create: "Salvar Cidade"
+        update: "Atualizar Cidade"
+      cost:
+        create: "Salvar Despesa"
+        update: "Atualizar Despesa"
   number:
     currency:
       format:
