@@ -1,14 +1,16 @@
 <p id="notice"><%= notice %></p>
 
+<h3>Dados do Feriado</h3>
+
 <p>
-  <strong>Name:</strong>
+  <strong><%= Holiday.human_attribute_name('name') %>:</strong>
   <%= @holiday.name %>
 </p>
 
 <p>
-  <strong>Date holiday:</strong>
-  <%= @holiday.date_holiday %>
+  <strong><%= Holiday.human_attribute_name('date_holiday') %>:</strong>
+  <%= date_br(@holiday.date_holiday) %>
 </p>
 
-<%= link_to 'Edit', edit_holiday_path(@holiday) %> |
-<%= link_to 'Back', holidays_path %>
+<%= link_to t('edit'), edit_holiday_path(@holiday) %> |
+<%= link_to t('back'), holidays_path %>
