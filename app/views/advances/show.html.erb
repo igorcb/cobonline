@@ -1,34 +1,37 @@
+
 <p id="notice"><%= notice %></p>
 
+<h3>Dados do Emprestimo</h3>
+
 <p>
-  <strong>City:</strong>
+  <strong><%= Advance.human_attribute_name('city') %>:</strong>
   <%= @advance.client.city.name %>
   -
-  <strong>Client:</strong>
+  <strong><%= Advance.human_attribute_name('client') %>:</strong>
   <%= @advance.client.name %>
 </p>
 
 <p>
-  <strong>Date advance:</strong>
-  <%= @advance.date_advance %>
+  <strong><%= Advance.human_attribute_name('date_advance') %>:</strong>
+  <%= date_br(@advance.date_advance) %>
 </p>
 
 <p>
-  <strong>Price:</strong>
+  <strong><%= Advance.human_attribute_name('price') %></strong>
   <%= @advance.price %>
   -
-  <strong>Balance:</strong>
+  <strong><%= Advance.human_attribute_name('balance') %>:</strong>
   <%= @advance.balance %>
   -
-  <strong>Payd:</strong>
+  <strong><%= Advance.human_attribute_name('payd') %>:</strong>
   <%= @advance.payd %>
 </p>
 
 <p>
-  <strong>Number parts:</strong>
+  <strong><%= Advance.human_attribute_name('number_parts') %>:</strong>
   <%= @advance.number_parts %>
   -
-  <strong>Percent:</strong>
+  <strong><%= Advance.human_attribute_name('percent') %>:</strong>
   <%= @advance.percent %>
 </p>
 
@@ -37,21 +40,20 @@
   <%= @advance.name_status %>
 </p>
 
-<%= link_to 'Edit', edit_advance_path(@advance) %> |
-<%= link_to 'Recalculation', recalculation_path(@advance) %> |
-<%= link_to 'Back', advances_path %>
-
-
+<%= link_to t('edit'), edit_advance_path(@advance) %> |
+<%= link_to t('recalculation'), recalculation_path(@advance) %> |
+<%= link_to t('back'), advances_path %>
+<hr/>
 <table class="table table-striped">
   <thead>
     <tr>
-      <th>Parts</th>
-      <th>Due Date</th>
-      <th>Price</th>
-      <th>Date payment</th>
-      <th>Value payment</th>
-      <th>Dalay</th>
-      <th>Notes</th>
+      <th><%= Advance.human_attribute_name('parts') %></th>
+      <th><%= Advance.human_attribute_name('due_date') %></th>
+      <th><%= Advance.human_attribute_name('price') %></th>
+      <th><%= Advance.human_attribute_name('date_payment') %></th>
+      <th><%= Advance.human_attribute_name('value_payment') %></th>
+      <th><%= Advance.human_attribute_name('dalay') %></th>
+      <th><%= Advance.human_attribute_name('note') %></th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -60,9 +62,9 @@
     <% @advance.item_advances.order_asc.each do |item| %>
       <tr>
         <td><%= item.parts %></td>
-        <td><%= item.due_date %></td>
+        <td><%= date_br(item.due_date) %></td>
         <td><%= item.price %></td>
-        <td><%= item.date_payment %></td>
+        <td><%= date_br(item.date_payment) %></td>
         <td><%= item.value_payment %></td>
         <td><%= item.dalay %></td>
         <td><%= item.note %></td>

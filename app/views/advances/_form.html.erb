@@ -11,33 +11,34 @@
     </div>
   <% end %>
 
-  <div class="field">
+  <div class="form-group">
     <%= f.label :date_advance %><br>
-    <%= f.date_select :date_advance %>
+    <%= f.date_select :date_advance, {class: "form-control"} %>
   </div>
-  <div class="field">
+  <div class="form-group">
     <%= f.label :client_id %><br>
     <%= f.select( :client_id, Client.order(:name).collect {|c| [c.name, c.id]} , {include_blank: true}, {class: "form-control"} )%>
   </div>
-  <div class="field">
+  <div class="form-group">
     <%= f.label :price %><br>
-    <%= f.text_field :price %>
+    <%= f.text_field :price, {class: "form-control"} %>
   </div>
 <!--   
-  <div class="field">
+  <div class="form-group">
     <%#= f.label :balance %><br>
     <%#= f.text_field :balance %>
   </div>
  -->  
-  <div class="field">
+  <div class="form-group">
     <%= f.label :number_parts %><br>
-    <%= f.number_field :number_parts %>
+    <%= f.text_field :number_parts, {class: "form-control"} %>
   </div>
-  <div class="field">
+  <div class="form-group">
     <%= f.label :percent %><br>
-    <%= f.text_field :percent %>
+    <%= f.text_field :percent, {class: "form-control"} %>
   </div>
-  <div class="actions">
-    <%= f.submit %>
+  <div class="form-group">
+    <%= f.submit class: 'btn btn-primary btn-block'  %>
+    <%= link_to t('back'), advances_path, class: 'btn btn-default btn-block' %>
   </div>
 <% end %>
