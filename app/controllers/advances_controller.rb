@@ -3,10 +3,23 @@ class AdvancesController < ApplicationController
   before_action :user_admin
   before_action :set_advance, only: [:show, :edit, :update, :destroy, :recalculation]
 
+  def get_client_for_city
+    #puts ">>>>>>>>>>>>>>>> cost_center_id: #{params[:cost_center_id].to_i}"
+    city_id = params[:city_id].to_i
+    subs = Client.order_asc.where(:city_id => city_id)
+    sub = []
+    subs.each do |s|
+      sub << {:id => s.id, :n => s.name}
+    end
+    render :text => sub.to_json
+  end
+
+
   # GET /advances
   # GET /advances.json
   def index
     @advances = Advance.order_desc
+    @cities = City.all
   end
 
   # GET /advances/1

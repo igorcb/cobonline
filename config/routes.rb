@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   resources :holidays
   resources :cities
 
+  match "/get_client_for_city", :controller => "advances", :action => "get_client_for_city", via: [:get]
   match '/dashboard',  to: 'static_pages#dashboard',         via: 'get'
  
   root 'item_advances#index'
