@@ -23,7 +23,8 @@
 
   <div class="form-group">
     <%= f.label :client_id %><br>
-    <%= f.select( :client_id, Client.order(:name).collect {|c| [c.name, c.id]} , {include_blank: true}, {class: "form-control"} )%>
+    <%#= f.select( :client_id, Client.order(:name).limit(1).collect {|c| [c.name, c.id]} , {include_blank: true}, {class: "form-control"} )%>
+    <%= f.select( :client_id, "", {:prompt => "Primeiro informe a cidade"}, {class: "form-control"} )%>
   </div>
 
   <div class="form-group">
