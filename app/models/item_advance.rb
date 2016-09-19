@@ -12,7 +12,7 @@ class ItemAdvance < ActiveRecord::Base
   	last_parts = self.advance.item_advances.last
   	advance = self.advance
   	saldo = advance.balance.to_f 
-    juros =  (saldo * self.advance.percent) / 100
+    juros = (saldo * self.advance.percent) / 100
     puts ">>>>>>>>>>>>>>>> venc: #{last_parts.due_date}"
     puts ">>>>>>>>>>>>>>> saldo: #{(saldo).to_f}"
     data_pagamemto = date
@@ -23,7 +23,7 @@ class ItemAdvance < ActiveRecord::Base
     	parcela = n_da_parcela[0..2]
     	parcela = (parcela.to_i + 1).to_s.rjust(3, '0')
       puts ">>>>>>>>>>>>>>> juros: #{juros.to_f}"
-    	valor_parcela = last_parts.price + juros
+    	valor_parcela = last_parts.price
     	data = proximo_dia_util(last_parts.due_date + 1.day)
     	advance.item_advances.create!(parts: "#{parcela}/#{advance.number_parts}" , price: valor_parcela, due_date: data, dalay: 0)
     elsif ((saldo == 0.00) || (saldo < 0.00))
