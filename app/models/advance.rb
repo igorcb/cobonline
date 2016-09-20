@@ -60,7 +60,7 @@ class Advance < ActiveRecord::Base
     city = self.city
     price = self.price - self.lucre
     historic = "PGTO DE EMPRESTIMO - #{self.client.name}"
-    CurrentAccount.create!(type_launche: type_launche , city_id: city.id, cost_id: cost, date_ocurrence: Date.today.to_s, price: price, historic: historic )
+    CurrentAccount.create!(type_launche: type_launche , city_id: city.id, cost_id: cost, date_ocurrence: self.date_advance, price: price, historic: historic )
   end
 
   def balance

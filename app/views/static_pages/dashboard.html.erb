@@ -19,6 +19,7 @@
     <div class="panel-body">
       Total Diária:  <%= item.valor %> <br />
       Total Cobrado: <%= item.valor_pago %> <br />
+      Saldo Caixa:   <%= CurrentAccount.saldo(item.id) %>
     </div>
   </div>
 <% end %>

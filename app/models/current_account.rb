@@ -21,8 +21,12 @@ class CurrentAccount < ActiveRecord::Base
   	end
   end
 
-  def self.saldo(date=nil)
-    date.nil? ? CurrentAccount.sum('price*type_launche') : CurrentAccount.where(date_ocurrence: date).sum('price*type_launche')
-  end
+  # def self.saldo(date=nil)
+  #   date.nil? ? CurrentAccount.sum('price*type_launche') : CurrentAccount.where(date_ocurrence: date).sum('price*type_launche')
+  # end
   
+  def self.saldo(city, date=nil)
+    date.nil? ? CurrentAccount.where(city_id: city).sum('price*type_launche') : CurrentAccount.where(city_id: city, date_ocurrence: date).sum('price*type_launche')
+  end
+
 end
