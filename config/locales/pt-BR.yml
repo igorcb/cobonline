@@ -54,6 +54,8 @@ pt-BR:
       new: "Incluir Caixa"
     new:
       title: "Lancamento do Caixa"
+    search:
+      title: "Consultar Lancamentos do Caixa"
   activerecord:
     attributes:
       advance:
