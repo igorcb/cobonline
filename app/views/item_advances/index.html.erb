@@ -5,8 +5,18 @@
   <div class="panel-body">
     Total Diária: <%= @item_advances.sum('item_advances.price')%> <br /> 
     Total Cobrado: <%= @item_advances.sum('item_advances.value_payment')%> <br />
-    Saldo Caixa:   <%= CurrentAccount.saldo(current_user.city_id) %>
   </div>
+
+  <div class="panel-heading">
+    <h3 class="panel-title">Resumo Caixa</h3>
+  </div>
+  <div class="panel-body">
+    Saldo Anterior:   <%= CurrentAccount.saldo_anterior(current_user.city_id) %> <br />
+    Total Entradas:   <%= CurrentAccount.total_credito(current_user.city_id) %> <br />
+    Total Saidas  :   <%= CurrentAccount.total_debito(current_user.city_id) %> <br />
+    Saldo Diario  :   <%= CurrentAccount.saldo(current_user.city_id) %> <br />
+  </div>
+
  
 </div>
 
@@ -34,4 +44,5 @@
      </div>
    <% end %>
 <% end %>
+
 
