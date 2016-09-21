@@ -21,6 +21,11 @@ class CurrentAccount < ActiveRecord::Base
   	end
   end
 
+  def self.ransackable_attributes(auth_object = nil)
+    ['date_ocurrence', 'city_id', 'cost_id', 'historic' ]
+  end
+
+
   # def self.saldo(date=nil)
   #   date.nil? ? CurrentAccount.sum('price*type_launche') : CurrentAccount.where(date_ocurrence: date).sum('price*type_launche')
   # end

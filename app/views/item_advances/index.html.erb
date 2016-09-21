@@ -5,6 +5,7 @@
   <div class="panel-body">
     Total Diária: <%= @item_advances.sum('item_advances.price')%> <br /> 
     Total Cobrado: <%= @item_advances.sum('item_advances.value_payment')%> <br />
+    Saldo Caixa:   <%= CurrentAccount.saldo(current_user.city_id) %>
   </div>
  
 </div>

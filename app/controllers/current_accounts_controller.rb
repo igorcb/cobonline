@@ -2,10 +2,16 @@ class CurrentAccountsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_current_account, only: [:show, :edit, :update, :destroy]
 
+  def search
+    @q = CurrentAccount.ransack(params[:q])
+    @current_accounts = @q.result
+  end  
+
   # GET /current_accounts
   # GET /current_accounts.json
   def index
-    @current_accounts = CurrentAccount.all
+    @q = CurrentAccount.ransack(params[:q])
+    @current_accounts = @q.result
   end
 
   def index_user_operator

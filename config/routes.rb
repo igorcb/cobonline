@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+
+  match "/search_current_accounts", :controller => "current_accounts", :action => "search", via: [:get]
+  match "/result_search_current_accounts" => "current_accounts#search_logistic", via: [:get]
+
   resources :current_accounts do
     collection do
       get 'index_user_operator'

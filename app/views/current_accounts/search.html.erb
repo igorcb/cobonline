@@ -1,0 +1,23 @@
+<h1><%= t(".title") %></h1>
+
+<div class="panel-body">
+  <%#= search_form_for @q, :remote=>"true", url: result_search_current_accounts_path, :method => :get do |f| %>
+  <%= search_form_for @q do |f| %>
+    <div class="form-group">
+      <%= f.label :city_id_eq %>
+      <%= f.collection_select :city_id_eq, City.order(:name), :id, :name, {include_blank: true}, {class: "form-control"} %>
+    </div>
+    <div class="form-group">
+      <%= f.label :cost_id_eq %>
+      <%= f.collection_select :cost_id_eq, Cost.order(:name), :id, :name, {include_blank: true}, {class: "form-control"} %>
+    </div>
+    <div class="form-group">
+      <%= f.label :date_ocurrence_eq %>
+      <%= f.search_field :date_ocurrence_eq , class: "form-control data", placeholder: "05/12/2014" %>  
+    </div>
+    <div class="actions">
+      <%= f.submit "Search" %>
+    </div>
+  <% end %>
+</div>
+
