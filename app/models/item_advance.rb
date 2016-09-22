@@ -43,7 +43,7 @@ class ItemAdvance < ActiveRecord::Base
   end
 
   def self.total_cobrado(city_id)
-    @item_advances = ItemAdvance.joins(:client, :city).select("cities.id as id, cities.name as cidade, sum(item_advances.price) as valor, sum(item_advances.value_payment) as valor_pago").where("cities.id = ? and DATE(due_date) = ? ", city_id, Date.current -1.day.to_s ).sum(:value_payment)
+    @item_advances = ItemAdvance.joins(:client, :city).select("cities.id as id, cities.name as cidade, sum(item_advances.price) as valor, sum(item_advances.value_payment) as valor_pago").where("cities.id = ? and DATE(due_date) = ? ", city_id, Date.current ).sum(:value_payment)
   end
 
 end
