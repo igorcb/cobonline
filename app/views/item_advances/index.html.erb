@@ -3,8 +3,8 @@
     <h3 class="panel-title">Total Cobranca</h3>
   </div>
   <div class="panel-body">
-    Total Diária: <%= @item_advances.sum('item_advances.price')%> <br /> 
-    Total Cobrado: <%= @item_advances.sum('item_advances.value_payment')%> <br />
+    Total Diária: <%= ItemAdvances.total_diaria(current_user.city_id) %> <br /> 
+    Total Cobrado: <%= ItemAdvances.total_cobrado(current_user.city_id) %> <br />
   </div>
 
   <div class="panel-heading">

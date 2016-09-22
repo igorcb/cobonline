@@ -38,4 +38,12 @@ class ItemAdvance < ActiveRecord::Base
   	ItemAdvance.where("advance_id = :advance_id AND due_date > :due_date",{advance_id: self.advance_id, due_date: self.due_date}).order(:due_date).limit(1)
   end
 
+  def self.total_diaria(city_id)
+    @item_advances = ItemAdvance.joins(:client, :city).select("cities.id as id, cities.name as cidade, sum(item_advances.price) as valor, sum(item_advances.value_payment) as valor_pago").where("cities.id = ? and DATE(due_date) = ? ", city_id, Date.current.to_s ).sum(:price)    
+  end
+
+  def self.total_cobrado(city_id)
+    @item_advances = ItemAdvance.joins(:client, :city).select("cities.id as id, cities.name as cidade, sum(item_advances.price) as valor, sum(item_advances.value_payment) as valor_pago").where("cities.id = ? and DATE(due_date) = ? ", city_id, Date.current -1.day.to_s ).sum(:value_payment)
+  end
+
 end
