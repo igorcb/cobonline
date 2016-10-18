@@ -16,6 +16,11 @@ class CurrentAccount < ActiveRecord::Base
     CREDITO = 1
   end
 
+  module TypeCost
+    PAGAMENTO_EMPRESTIMO= 1
+    RECEBIMENTO_COBRANCA = 2
+  end
+
   def credito_debito
   	case self.type_launche
   		when -1 then "Débito"

@@ -2,6 +2,17 @@ class CurrentAccountsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_current_account, only: [:show, :edit, :update, :destroy]
 
+  def launch_current
+    price = params[:price]
+    CurrentAccount.create!(city_id: 1, 
+                           cost_id: CurrentAccount::TypeCost::RECEBIMENTO_COBRANCA, 
+                    date_ocurrence: Date.today, 
+                      type_launche: CurrentAccount::TypeLaunche::CREDITO, 
+                             price: price, 
+                          historic: "RECEBIMENO DE COBRANÇA AUTOMATICO")
+    redirect_to index_user_operator_current_accounts_path
+  end
+
   def search
     @q = CurrentAccount.ransack(params[:q])
     @current_accounts = @q.result
@@ -15,7 +26,7 @@ class CurrentAccountsController < ApplicationController
   end
 
   def index_user_operator
-    @current_accounts = CurrentAccount.where(city_id: current_user.city_id)
+    @current_accounts = CurrentAccount.where(city_id: current_user.city_id).order(date_ocurrence: :desc)
   end
 
   # GET /current_accounts/1
