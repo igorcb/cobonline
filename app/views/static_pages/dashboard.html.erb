@@ -6,6 +6,7 @@
     Advances: <%= Advance.advances_open.sum(:price) %> <br />
     Balance: <%= Advance.total_balance%> <br />
        Lucre: <%= Advance.total_lucre %> <br />
+       <%= link_to "Lucro por mes click aqui", advance_dashboard_path, class: "label label-primary" %> 
   </div>
  
 </div>
@@ -16,7 +17,7 @@
     <div class="panel-heading">
       <h3 class="panel-title"><%= item.cidade %></h3>
     </div>
-    <div class="panel-body"> <!-- new_product_path(:param1 => "value1", :param2 => "value2") -->
+    <div class="panel-body"> 
       Total Diária:  <%= item.valor %> <br />
       Total Cobrado: <%= item.valor_pago %>  </br>
       Saldo Caixa:   <%= CurrentAccount.saldo(item.id) %>
