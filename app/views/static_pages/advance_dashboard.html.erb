@@ -1,0 +1,13 @@
+<%= form_tag controller: "static_pages", action: "advance_search", method: "get" do %>
+  <div class="form-group">
+		<%= label_tag :data_ini, "Data Inicio" %>
+  	<%= text_field_tag :data_ini %>
+  </div>
+	<div class="form-group">
+		<%= label_tag :data_fim, "Data Final" %>
+  	<%= text_field_tag :data_fim %>
+  </div>
+  <div class="form-group">
+  	<%= submit_tag "Filtrar" %>
+  </div>
+<% end %>

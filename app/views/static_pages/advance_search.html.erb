@@ -1,0 +1,12 @@
+<h1>Search Advance Result</h1>
+
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">Summary period from <%= @data_ini %> to <%= @data_fim %></h3>
+  </div>
+  <div class="panel-body">
+    Advances: <%= @advances.sum(:price) %> <br />
+       Lucre: <%= @advances.sum("(price * percent) / 100") %> <br />
+  </div>
+ 
+</div>

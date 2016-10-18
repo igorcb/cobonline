@@ -3,6 +3,8 @@ Rails.application.routes.draw do
   match "/search_current_accounts", :controller => "current_accounts", :action => "search", via: [:get]
   match "/result_search_current_accounts" => "current_accounts#search_logistic", via: [:get]
   match "/launch_current_accounts" => "current_accounts#launch_current", via: [:get, :post]
+  match '/advance_dashboard',  to: 'static_pages#advance_dashboard', via: [:get, :post]
+  match '/advance_search',  to: 'static_pages#advance_search', via: [:get, :post]
 
   resources :current_accounts do
     collection do
