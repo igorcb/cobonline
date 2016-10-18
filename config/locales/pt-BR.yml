@@ -52,6 +52,10 @@ pt-BR:
     index:
       title: "Lancamentos do Caixa"
       new: "Incluir Caixa"
+    index_user_operator:
+      title: "Lancamentos do Caixa"
+      new: "Incluir Caixa"
+      search: "Consultar"
     new:
       title: "Lancamento do Caixa"
     search:
