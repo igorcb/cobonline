@@ -27,12 +27,12 @@
         <td><%= advance.client.city.name %></td>
         <td><%= advance.client.name %></td>
         <td><%= date_br(advance.date_advance) %></td>
-        <td><%= advance.price %></td>
-        <td><%= advance.balance %></td>
-        <td><%= advance.payd %></td>
+        <td><%= number_to_currency(advance.price, unit: "R$ ", separator: ",", delimiter: ".")  %></td>
+        <td><%= number_to_currency(advance.balance, unit: "R$ ", separator: ",", delimiter: ".")  %></td>
+        <td><%= number_to_currency(advance.payd, unit: "R$ ", separator: ",", delimiter: ".")  %></td>
         <td><%= advance.number_parts %></td>
-        <td><%= advance.percent %></td>
-        <td><%= advance.lucre %></td>
+        <td><%= number_to_currency( advance.percent, unit: "R$ ", separator: ",", delimiter: ".")  %></td>
+        <td><%= number_to_currency(advance.lucre, unit: "R$ ", separator: ",", delimiter: ".")  %></td>
         <td><%= advance.name_status %></td>
         <td><%= link_to t('show'), advance %></td>
         <td><%= link_to t('destroy'), advance, method: :delete, data: { confirm: 'Are you sure?' } %></td>
