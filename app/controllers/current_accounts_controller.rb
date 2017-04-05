@@ -15,14 +15,14 @@ class CurrentAccountsController < ApplicationController
 
   def search
     @q = CurrentAccount.ransack(params[:q])
-    @current_accounts = @q.result
+    @current_accounts = @q.result.paginate(:page => params[:page]).order(date_ocurrence: :desc)
   end  
 
   # GET /current_accounts
   # GET /current_accounts.json
   def index
     @q = CurrentAccount.ransack(params[:q])
-    @current_accounts = @q.result
+    @current_accounts = @q.result.paginate(:page => params[:page]).order(date_ocurrence: :desc)
   end
 
   def index_user_operator
