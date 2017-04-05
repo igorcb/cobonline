@@ -11,10 +11,19 @@
     </div>
   <% end %>
 
-  <div class="form-group">
-    <%= f.label :date_advance %><br>
-    <%= f.date_select :date_advance, {class: "form-control"} %>
+<!--   <div class="form-group">
+    <%#= f.label :date_advance %><br>
+    <%#= f.date_select :date_advance, {class: "form-control"} %>
   </div>
+ -->  <div class="form-group">
+    <%= f.label :date_advance, "Data" %><br>
+    <% if @advance.new_record? %> 
+      <%= f.text_field :date_advance, value: date_br(DateTime.now), class: "form-control datepicker" %>
+    <% else %>
+      <%= f.text_field :date_advance, value: date_br(@advance.date_ocurrence), class: "form-control datepicker" %>
+    <% end %>
+  </div>
+
 
   <div class="form-group">
     <%= label_tag :city_id, Advance.human_attribute_name('city')  %> <br>
@@ -39,11 +48,11 @@
  -->  
   <div class="form-group">
     <%= f.label :number_parts %><br>
-    <%= f.text_field :number_parts, {class: "form-control"} %>
+    <%= f.text_field :number_parts, {value: 20, class: "form-control"} %>
   </div>
   <div class="form-group">
     <%= f.label :percent %><br>
-    <%= f.text_field :percent, {class: "form-control"} %>
+    <%= f.text_field :percent, {value: 15, class: "form-control"} %>
   </div>
   <div class="form-group">
     <%= f.submit class: 'btn btn-primary btn-block'  %>
